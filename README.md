@@ -1,2 +1,3 @@
 # project-euler
-Project Euler solutions.
+Project Euler solutions.  
+@author Beatrice Wittgren
