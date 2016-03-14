@@ -1,4 +1,4 @@
 
 public interface Problem {
-	public void run();
+	public void solve();
 }
