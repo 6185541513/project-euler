@@ -5,7 +5,7 @@ public class ID_002 implements Problem{
 	private final long MAX = 4000000L; 
 	private long sum = 0L;
 	
-	private long sumEvenFibonacciNumbers() {
+	private void sumEvenFibonacciNumbers() {
 		int index = 0;
 		long value = 0L;
 		
@@ -16,7 +16,6 @@ public class ID_002 implements Problem{
 			}
 			++index;
 		}
-		return sum;
 	}//sumEvenFibonacciNumbers
 	
 	private long fibonacci(int i) {
