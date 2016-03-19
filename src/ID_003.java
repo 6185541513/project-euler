@@ -2,30 +2,50 @@ import java.util.ArrayList;
 
 
 public class ID_003 implements Problem{
-	private final long n = 600851475143L;
-	private final int t = 13195;
-	private ArrayList<Integer> primeFactors = new ArrayList<Integer>();
+	private ArrayList<Integer> primeNumbers = new ArrayList<>();
+	private ArrayList<Integer> primeFactors = new ArrayList<>();
 	
-	private long findLargestPrimeFactor() {
-		for(int i = 0; i <= t; i++) {
-			if(isPrimeFactor(i)) {
-				primeFactors.add(i);
+	private long findLargestPrimeFactor() {	
+		long n = 600851475143L;
+		//int n = 13195;
+		
+		// collect prime numbers
+		int limit = (int)Math.sqrt(n);
+		for(int i = 2; i <= limit; i++) {
+			if(isPrimeNumber(i)) {
+				primeNumbers.add(i);
 			}
 		}
-		return 0;
+		
+		// prime factorization
+		primeFactorization(n);
+		
+		return primeFactors.get(primeFactors.size()-1);
 	}
 	
-	private boolean isPrimeFactor(int n) {
-		int tmp = 0;
+	private boolean primeFactorization(long n) {		
+		for(Integer currentPrime : primeNumbers) {
+			while(n % currentPrime == 0) {
+				n /= currentPrime;
+				primeFactors.add(currentPrime);
+			}
+		}
+		
 		return false;
 	}
 	
-	private boolean isInteger(int n) {
-		return n == (int)n ? true : false;
-	}
+	private boolean isPrimeNumber(int n) {
+		int limit = (int) Math.sqrt(n);
+		
+		for(int i = 2; i <= limit; i++) {
+			if(n % i == 0) { return false; }
+		}
+		
+		return true;
+	}//isPrimeNumber
 	
 	public void solve() {
-		System.out.println(findLargestPrimeFactor());
+		System.out.println("solve:" + findLargestPrimeFactor());
 	}//solve
 
 }
