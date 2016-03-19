@@ -16,7 +16,7 @@ public class ID_003 implements Problem{
 	}
 	
 	private boolean isPrimeFactor(int n) {
-		
+		int tmp = 0;
 		return false;
 	}
 	
