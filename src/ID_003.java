@@ -21,7 +21,7 @@ public class ID_003 implements Problem{
 		primeFactorization(n);
 		
 		return primeFactors.get(primeFactors.size()-1);
-	}
+	}//findLargestPrimeFactor
 	
 	private boolean primeFactorization(long n) {		
 		for(Integer currentPrime : primeNumbers) {
@@ -32,7 +32,7 @@ public class ID_003 implements Problem{
 		}
 		
 		return false;
-	}
+	}//primeFactorization
 	
 	private boolean isPrimeNumber(int n) {
 		int limit = (int) Math.sqrt(n);
@@ -45,7 +45,7 @@ public class ID_003 implements Problem{
 	}//isPrimeNumber
 	
 	public void solve() {
-		System.out.println("solve:" + findLargestPrimeFactor());
+		System.out.println(findLargestPrimeFactor());
 	}//solve
 
 }
