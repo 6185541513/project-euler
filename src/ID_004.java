@@ -38,7 +38,7 @@ public class ID_004 implements Problem{
 		String str = Integer.toString(n);
 		int firstIndex = 0;
 		int lastIndex = str.length()-1;
-		int midIndex = Math.round(lastIndex);
+		int midIndex = Math.round(lastIndex/2);
 		
 		for(int i = firstIndex; i <= midIndex; i++) {
 			if(str.charAt(firstIndex+i) != str.charAt(lastIndex-i)) {
