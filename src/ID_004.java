@@ -1,10 +1,15 @@
+import java.util.ArrayList;
+
 
 public class ID_004 implements Problem{
 
 	private final int MAX_PRODUCT = 99;
+	int product1 = MAX_PRODUCT;
+	int product2 = MAX_PRODUCT;
 	private int TOP_TEN_PERCENT_PRODUCT = (int) MAX_PRODUCT - MAX_PRODUCT/10;
 	private int largestPalindrome = 0;
-	private int maxPotentialPalindrome = MAX_PRODUCT * MAX_PRODUCT; 
+	int potentialMaxPalindrome; 
+	ArrayList<Integer> palindromeList = new ArrayList<>();
 	
 	private int findLargestPalindrome() {
 		// solution #1
@@ -29,9 +34,36 @@ public class ID_004 implements Problem{
 		}
 	}
 	
-	// solution #2. start from palindrome perspective. serious solution attempt.
+	// solution #2. start from palindrome perspective. serious solution attempt. sort of. still a shit solution. sort of.
 	private void solution2() {
-		
+		fillPalindromeList();
+		int palindrome;
+		int product = MAX_PRODUCT;
+		int index = 0;
+		boolean done = false;
+		do{
+			palindrome = palindromeList.get(index);
+			do{
+				for(int i = product; i >= 0; i--) {
+					if(product * i == palindrome) {
+						largestPalindrome = palindrome;
+						done = true;
+						System.out.println(product);
+						break;
+					}
+				}	
+				--product;
+			}while(product >= 0 && !done);
+			++index;
+		}while(index <= palindromeList.size()-1);
+	}
+	
+	private void fillPalindromeList() {
+		for(int i = MAX_PRODUCT*MAX_PRODUCT; i >= 0; i--) {
+			if(isPalindrome(i)) {
+				palindromeList.add(i);
+			}
+		}
 	}
 	
 	private boolean isPalindrome(int n) {
@@ -46,10 +78,6 @@ public class ID_004 implements Problem{
 			}
 		}
 		return true;
-	}
-	
-	private boolean isEven(int n) {
-		return n % 2 == 0 ? true : false;
 	}
 	
 	public void solve() {
