@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class ID_004 implements Problem{
 
-	private final int MAX_PRODUCT = 99;
+	private final int MAX_PRODUCT = 999;
+	private final int MIN_PRODUCT = 100;
 	int product1 = MAX_PRODUCT;
 	int product2 = MAX_PRODUCT;
 	private int TOP_TEN_PERCENT_PRODUCT = (int) MAX_PRODUCT - MAX_PRODUCT/10;
@@ -13,7 +14,7 @@ public class ID_004 implements Problem{
 	
 	private int findLargestPalindrome() {
 		// solution #1
-		solution1();
+		//solution1();
 		
 		// solution #2
 		solution2();
@@ -34,32 +35,35 @@ public class ID_004 implements Problem{
 		}
 	}
 	
-	// solution #2. start from palindrome perspective. serious solution attempt. sort of. still a shit solution. sort of.
+	// solution #2. start from palindrome perspective. serious solution attempt. sort of.
 	private void solution2() {
 		fillPalindromeList();
+		int palindromeListSize = palindromeList.size();
 		int palindrome;
-		int product = MAX_PRODUCT;
+		int product;
 		int index = 0;
 		boolean done = false;
+		
 		do{
 			palindrome = palindromeList.get(index);
+			product = MAX_PRODUCT;
 			do{
-				for(int i = product; i >= 0; i--) {
+				for(int i = product; i >= MIN_PRODUCT; i--) {
 					if(product * i == palindrome) {
 						largestPalindrome = palindrome;
 						done = true;
-						System.out.println(product);
 						break;
 					}
 				}	
 				--product;
-			}while(product >= 0 && !done);
+			}while(product >= MIN_PRODUCT && !done);
 			++index;
-		}while(index <= palindromeList.size()-1);
+		}while(index < palindromeListSize && !done);
 	}
 	
 	private void fillPalindromeList() {
-		for(int i = MAX_PRODUCT*MAX_PRODUCT; i >= 0; i--) {
+		int min = MIN_PRODUCT*MIN_PRODUCT;
+		for(int i = MAX_PRODUCT*MAX_PRODUCT; i >= min; i--) {
 			if(isPalindrome(i)) {
 				palindromeList.add(i);
 			}
