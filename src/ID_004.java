@@ -85,7 +85,7 @@ public class ID_004 implements Problem{
 	}
 	
 	public void solve() {
-		System.out.println(this.class + " :" + findLargestPalindrome());
+		System.out.println(this.class + ", find largest palindrome :" + findLargestPalindrome());
 	}
 
 }
