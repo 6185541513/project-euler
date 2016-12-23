@@ -3,9 +3,9 @@ public class ID_005 implements Problem{
 
     private final int RANGE_MIN = 1;
     private final int RANGE_MAX = 20;
+    private int smallestMultiple = 2520;
     
     private int smallestMultiple(){
-	int smallestMultiple = 2520;
 	boolean keepGoing = true;
 
 	while(keepGoing) {
@@ -26,7 +26,7 @@ public class ID_005 implements Problem{
     }
 
     private boolean isEvenlyDevisible(int value){
-	return (smallestMultiple % value == 0);
+	return (smallestMultiple % value == 0 ? true : false);
     }
     
     public void solve(){
